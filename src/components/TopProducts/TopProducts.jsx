@@ -1,82 +1,123 @@
 import React from "react";
-import Img1 from "../../assets/shirt/shirt.png";
-import Img2 from "../../assets/shirt/shirt2.png";
-import Img3 from "../../assets/shirt/shirt3.png";
 import { FaStar } from "react-icons/fa";
 
-const ProductsData = [
+const JobData = [
   {
     id: 1,
-    img: Img1,
-    title: "Casual Wear",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    companyLogo: "/logos/google.png",
+    companyName: "Google",
+    jobTitle: "Software Engineer Intern",
+    jobType: "Internship",
+    experienceLevel: "Fresher",
+    location: "Bangalore, India",
   },
   {
     id: 2,
-    img: Img2,
-    title: "Printed shirt",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    companyLogo: "/logos/microsoft.png",
+    companyName: "Microsoft",
+    jobTitle: "Product Manager - Entry Level",
+    jobType: "Full-time",
+    experienceLevel: "0-1 Years",
+    location: "Hyderabad, India",
   },
   {
     id: 3,
-    img: Img3,
-    title: "Women shirt",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    companyLogo: "/logos/tcs.png",
+    companyName: "TCS",
+    jobTitle: "Java Developer",
+    jobType: "Full-time",
+    experienceLevel: "Fresher",
+    location: "Pune, India",
+  },
+  {
+    id: 4,
+    companyLogo: "/logos/tcs.png",
+    companyName: "TCS",
+    jobTitle: "Java Developer",
+    jobType: "Full-time",
+    experienceLevel: "Fresher",
+    location: "Pune, India",
   },
 ];
-const TopProducts = ({ handleOrderPopup }) => {
+
+const TopProducts = ({ handleApply }) => {
   return (
     <div>
-      <div className="container">
+      <div className="container bg-primary p-10">
         {/* Header section */}
-        <div className="text-left mb-24">
-          <p data-aos="fade-up" className="text-sm text-primary">
-            Top Rated Products for you
+        <div className="text-left mb-12">
+          <p
+            data-aos="fade-up"
+            className="text-sm text-white dark:text-gray-800"
+          >
+            Handpicked Opportunities
           </p>
-          <h1 data-aos="fade-up" className="text-3xl font-bold">
-            Best Products
-          </h1>
-          <p data-aos="fade-up" className="text-xs text-gray-400">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
-            asperiores modi Sit asperiores modi
-          </p>
-        </div>
-        {/* Body section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
-          {ProductsData.map((data) => (
-            <div
-              data-aos="zoom-in"
-              className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-black/80 dark:hover:bg-primary hover:text-white relative shadow-xl duration-300 group max-w-[300px]"
+
+          {/* Flex row for heading and button */}
+          <div className="flex items-center justify-between mt-2">
+            <h1
+              data-aos="fade-up"
+              className="text-3xl font-bold text-white dark:text-gray-800"
             >
-              {/* image section */}
-              <div className="h-[100px]">
+              Top Entry-Level Roles
+            </h1>
+            <button
+              data-aos="fade-up"
+              className="text-l text-white hover:underline hover:text-gray-200 font-medium dark:text-blue-800"
+            >
+              Explore All Openings →
+            </button>
+          </div>
+        </div>
+
+        {/* Body section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
+          {JobData.map((data) => (
+            <div
+              key={data.id}
+              data-aos="zoom-in"
+              className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-black/80 dark:hover:bg-primary hover:text-white relative shadow-xl duration-300 group max-w-[300px] w-full"
+            >
+              {/* Company logo */}
+              <div className="h-[100px] flex items-center justify-center pt-4">
                 <img
-                  src={data.img}
-                  alt=""
-                  className="max-w-[140px] block mx-auto transform -translate-y-20 group-hover:scale-105 duration-300 drop-shadow-md"
+                  src={data.companyLogo}
+                  alt={`${data.companyName} logo`}
+                  className="max-w-[100px] h-auto object-contain block"
                 />
               </div>
-              {/* details section */}
-              <div className="p-4 text-center">
-                {/* star rating */}
-                <div className="w-full flex items-center justify-center gap-1">
-                  <FaStar className="text-yellow-500" />
-                  <FaStar className="text-yellow-500" />
-                  <FaStar className="text-yellow-500" />
-                  <FaStar className="text-yellow-500" />
+
+              {/* Job details */}
+              <div className="p-4 text-left">
+                {/* Company name */}
+                <h2 className="text-sm font-semibold text-gray-600 group-hover:text-white mb-1">
+                  {data.companyName}
+                </h2>
+
+                {/* Job title */}
+                <h1 className="text-lg font-bold mb-2">{data.jobTitle}</h1>
+
+                {/* Job type, experience, location */}
+                <div className="flex flex-col gap-1 text-sm text-gray-500 group-hover:text-white">
+                  <p>
+                    <span className="font-medium">Type:</span> {data.jobType}
+                  </p>
+                  <p>
+                    <span className="font-medium">Experience:</span>{" "}
+                    {data.experienceLevel}
+                  </p>
+                  <p>
+                    <span className="font-medium">Location:</span>{" "}
+                    {data.location}
+                  </p>
                 </div>
-                <h1 className="text-xl font-bold">{data.title}</h1>
-                <p className="text-gray-500 group-hover:text-white duration-300 text-sm line-clamp-2">
-                  {data.description}
-                </p>
+
+                {/* CTA Button */}
                 <button
                   className="bg-primary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white group-hover:text-primary"
-                  onClick={handleOrderPopup}
+                  onClick={handleApply}
                 >
-                  Order Now
+                  Apply Now
                 </button>
               </div>
             </div>
